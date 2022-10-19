@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1 th:text="${titulo}"></h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">nombre</th>
+                    <th scope="col">costo</th>
+                    <th scope="col">fecha</th>
+
+                    <th scope="col">numeroSala</th>
+                    <th scope="col">capacidad</th>
+
+                </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="pelicula:${pelicula}">
+                <tr>
+
+                    <td th:text="${pelicula.getNombre}"></td>
+                    <td th:text="${pelicula.getCosto}"></td>
+                    <td th:text="${pelicula.getFecha}"></td>
+                    <td th:text="${pelicula.getSala.getNumeroSala}"></td>
+                    <td th:text="${pelicula.getSala.getCapacidad}"></td>
+
+                    <td>
+                        <a th:href="@{/delete/{id}(id=${pelicula.getId})}">Delete</a>
+                    </td>
+
+
+                </tr>
+            </th:block>
+            <td>
+                <a th:href="@{/peliculaN}">Crear</a>
+            </td>
+        </tbody>
+    </table>
+</body>
+</html>
